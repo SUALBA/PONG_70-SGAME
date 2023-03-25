@@ -1,0 +1,41 @@
+#game {
+	position: relative;
+	width: 800px;
+	height: 600px;
+	background-color: black;
+}
+
+#player1, #player2 {
+	position: absolute;
+	width: 20px;
+	height: 80px;
+	background-color: white;
+}
+
+#player1 {
+	left: 20px;
+	top: 250px;
+}
+
+#player2 {
+	right: 20px;
+	top: 250px;
+}
+
+#ball {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	border-radius: 50%;
+	top: 300px;
+	left: 400px;
+}
+
+#scoreboard {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	color: white;
+	font-size: 24px;
+}
