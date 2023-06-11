@@ -1,5 +1,7 @@
-//Ahora es el momento de agregar la lógica del juego en JavaScript. Primero, definimos algunas variables que necesitamos, como la velocidad de la pelota, las posiciones de los jugadores y el puntaje.//
-var ball = {
+//Ahora es el momento de agregar la lógica del juego en JavaScript. 
+//Primero, definimos algunas variables que necesitamos, como la velocidad de la pelota, 
+//las posiciones de los jugadores y el puntaje.//
+const ball = {
 	speed: 2,
 	x: 400,
 	y: 300,
@@ -7,20 +9,20 @@ var ball = {
 	dy: 2
 }
 
-var player1 = {
+const player1 = {
 	y: 250
 }
 
-var player2 = {
+const player2 = {
 	y: 250
 }
 
-var scoreboard = {
+const scoreboard = {
 	player1score: 0,
 	player2score: 0
 }
 
-var gameStarted = false;
+let gameStarted = false;
 
 
 function moveBall() {
@@ -72,17 +74,16 @@ function endGame() {
         document.getElementById("start-btn").style.display = "block";
     }, 2000); // 2000 representa 2000 milisegundos o 2 segundos, puede ajustarse.
 }
-//He utilizado la función setTimeout() para programar una tarea que se ejecutará después de un breve periodo de tiempo (en este caso, 2000 milisegundos o 2 segundos). 
-//Dentro de la función de retrollamada de setTimeout(), ocultamos el mensaje "GAME OVER" y mostramos el botón de inicio.
-//De esta manera, el mensaje "GAME OVER" será visible durante un tiempo determinado y luego desaparecerá para mostrar el botón de inicio. 
+//He utilizado la función setTimeout() para programar una tarea que se ejecutará después de un breve periodo de tiempo. 
+//Dentro de la función de retrollamada de setTimeout(), ocultamos el mensaje "GAME OVER" (sera visible 2") y mostramos el botón de inicio.
 
-	function playPingSound() {
-		var pingSound = document.getElementById("ping-sound");
-		pingSound.play();
+	function playPingSound() {	
+		const pingSound = document.getElementById("ping-sound");
+		pingSound.play();			//sonido al chocar
 	  }
 	  function playOutSound() {
-		var pingSound = document.getElementById("out-sound");
-		pingSound.play();
+		const pingSound = document.getElementById("out-sound");
+		pingSound.play();		//sonido al perder la bola
 	  }
 	document.getElementById("ball").style.top = ball.y + "px";
 	document.getElementById("ball").style.left = ball.x + "px";
@@ -167,10 +168,12 @@ document.getElementById("start-btn").addEventListener("click", function() {
 	startGame();
 	draw();
 });
-//para inicializar el juego
 
 
 
-// En este código, agregamos cuatro funciones para mover a los jugadores hacia arriba y hacia abajo. También usamos el método setInterval para llamar la función moveBall cada 30 milisegundos.
 
-//Finalmente, agregamos un controlador de eventos para detectar las teclas presionadas por los jugadores y llamar a las funciones correspondientes.
+// En este código, agregamos cuatro funciones para mover a los jugadores hacia arriba y hacia abajo.
+// También usamos el método setInterval para llamar la función moveBall cada 30 milisegundos.
+
+//Finalmente, agregamos un controlador de eventos para detectar 
+//las teclas presionadas por los jugadores y llamar a las funciones correspondientes.
