@@ -22,6 +22,7 @@ var scoreboard = {
 
 var gameStarted = false;
 
+
 function moveBall() {
 	console.log("moving ball");
 	ball.x += ball.speed * ball.dx;
@@ -33,26 +34,56 @@ function moveBall() {
 
 	if (ball.x <= 40 && ball.x >= 20 && ball.y >= player1.y && ball.y <= player1.y + 80) {
 		ball.dx *= -1;
+		playPingSound();
 	}
-
+	
 	if (ball.x >= 760 && ball.x <= 780 && ball.y >= player2.y && ball.y <= player2.y + 80) {
 		ball.dx *= -1;
+		playPingSound();
 	}
 
 	if (ball.x <= 0 || ball.x >= 800) {
 		if (ball.x <= 0) {
 			scoreboard.player2score++;
 			document.getElementById("player2score").innerHTML = scoreboard.player2score;
+			playOutSound();
 		} else {
 			scoreboard.player1score++;
 			document.getElementById("player1score").innerHTML = scoreboard.player1score;
+			playOutSound();	
 		}
 		
 		ball.x = 400;
 		ball.y = 300;
 		ball.dx *= -1;
-	}
+	  // Verifica si algún jugador ha alcanzado los 10 puntos
+	  if (scoreboard.player1score === 10 || scoreboard.player2score === 10) {
+        endGame();
+    }
+}
+function endGame() {
+    gameStarted = false;
+    document.getElementById("game-over").style.display = "block";
+    // Realiza otras acciones necesarias al finalizar el juego
+    
+    // Espera un breve periodo de tiempo antes de mostrar el botón de inicio
+    setTimeout(function() {
+        document.getElementById("game-over").style.display = "none";
+        document.getElementById("start-btn").style.display = "block";
+    }, 2000); // 2000 representa 2000 milisegundos o 2 segundos, puede ajustarse.
+}
+//He utilizado la función setTimeout() para programar una tarea que se ejecutará después de un breve periodo de tiempo (en este caso, 2000 milisegundos o 2 segundos). 
+//Dentro de la función de retrollamada de setTimeout(), ocultamos el mensaje "GAME OVER" y mostramos el botón de inicio.
+//De esta manera, el mensaje "GAME OVER" será visible durante un tiempo determinado y luego desaparecerá para mostrar el botón de inicio. 
 
+	function playPingSound() {
+		var pingSound = document.getElementById("ping-sound");
+		pingSound.play();
+	  }
+	  function playOutSound() {
+		var pingSound = document.getElementById("out-sound");
+		pingSound.play();
+	  }
 	document.getElementById("ball").style.top = ball.y + "px";
 	document.getElementById("ball").style.left = ball.x + "px";
 }
@@ -85,12 +116,17 @@ function movePlayer2Down() {
 	}
 }
 
+
+
 function startGame() {
-	gameStarted = true;
-	document.getElementById("start-btn").style.display = "none";
-	document.getElementById("player1score").innerHTML = scoreboard.player1score;
-	document.getElementById("player2score").innerHTML = scoreboard.player2score;
-	draw();
+    gameStarted = true;
+    document.getElementById("start-btn").style.display = "none";
+    document.getElementById("player1score").innerHTML = scoreboard.player1score;
+    document.getElementById("player2score").innerHTML = scoreboard.player2score;
+	scoreboard.player1score = 0;
+	scoreboard.player2score = 0;
+    ball.speed = 2; // Reiniciar la velocidad de la pelota
+    draw();
 }
 
 function draw() {

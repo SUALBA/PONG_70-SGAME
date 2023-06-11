@@ -20,6 +20,7 @@
 #player2 {
 	right: 20px;
 	top: 250px;
+	margin-left: 50px;
 }
 
 #ball {
@@ -32,10 +33,69 @@
 	left: 400px;
 }
 
+@font-face {
+	font-family: 'Digital-7';
+	src: url('../JUEGO_PONG/digital-2.ttf') format('truetype');
+  }
+  
+  
+
 #scoreboard {
+	font-family: 'Digital-7';
+    src: url('../JUEGO_PONG/digital-2.ttf') format('truetype');
 	position: absolute;
 	top: 10px;
-	left: 10px;
+	left: 330px;
 	color: white;
-	font-size: 24px;
+	font-size: 60px;
+	padding: 5px;
+	display: flex;
+	letter-spacing: 5px;
+	
+	
 }
+#player2score {
+	margin-left: 60px;
+}
+#line {
+	position: absolute;
+	left: 400px;
+	top: 0;
+	background-color: transparent;
+    background-image: linear-gradient(white 1px, transparent 1px);
+    background-size: 100% 5px; /* Altura de las rallitas */
+	width: 2px;
+	height: 100%;
+	
+  }
+  
+  
+#start-btn {
+	font-family: 'Digital-7';
+    src: url('../JUEGO_PONG/digital-2.ttf') format('truetype');
+	position: absolute;
+	top: 280px;
+	left: 200px;
+	color: white;
+	font-size: 40px;
+	padding: 15px;
+	background-color: rgb(17, 17, 21);
+	border-radius: 10px;
+	letter-spacing: 5px;
+	cursor: pointer;
+}
+#game-over {
+	display: none; /* Oculta el mensaje inicialmente , al empezar el juego*/
+	position: absolute;
+	padding: 15px;
+	background-color: rgb(17, 17, 21);
+	border-radius: 10px;
+	top: 230px;
+	left: 190px;
+	color: white;
+	font-size: 30px;
+	font-family: 'Digital-7';
+    src: url('../JUEGO_PONG/digital-2.ttf') format('truetype');
+	letter-spacing: 5px;
+  }
+ 
